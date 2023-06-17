@@ -6,18 +6,15 @@
  */
 int main(void)
 {
-char alphABET = 'a';
-while (alphABET <= 'z')
-{
-putchar(alphABET);
-alphABET++;
-}
-alphABET = 'A';
-while (alphABET <= 'Z')
-{
-putchar(alphABET);
-alphABET++;
-}
-putchar('\n');
-return (0);
+	char Test;
+
+	for (Test = 'a'; Test <= 'z'; Test++)
+		putchar(Test);
+
+	for (Test = 'A'; Test <= 'Z'; Test++)
+		putchar(Test);
+
+	putchar('\n');
+
+	return (0);
 }
