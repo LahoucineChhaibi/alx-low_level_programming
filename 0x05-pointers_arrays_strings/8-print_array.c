@@ -2,14 +2,12 @@
 #include "main.h"
 #include <stdio.h>
 
-
-/**
- * print_array - prints an aray a number of times.
- * @a: an array.
+ /**
+ * print_array - function that prints n elements of an array of integers.
+ * @a: an input array.
  * @n: the number of elements to print.
  *
  */
-
 
 void print_array(int *a, int n)
 {
