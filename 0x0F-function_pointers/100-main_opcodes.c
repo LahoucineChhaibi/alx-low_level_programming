@@ -1,24 +1,31 @@
-i#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
- * main - searchs for an integer
- *@argc: number of arguments
- *@argv: array with arguments
- *
- * Return: no return
+ * main - function to print its own opcode
+ * @argc: number of arguments
+ * @argv: argument variables passed
+ * Return: Always 0/
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	if (argc != 2)
+	int a, b;
+	char *s;
+
+	if (argc < 2)
 	{
 		printf("Error\n");
 		exit(1);
 	}
-	if (atoi(argv[1]) < 0)
+	a = atoi(argv[1]);
+	if (a < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
+	s = (char *)main;
+	for (b = 0; b < a - 1; b++)
+		printf("%02hhx ", s[b]);
+	printf("%02hhx\n", s[b]);
 	return (0);
 }
