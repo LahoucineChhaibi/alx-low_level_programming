@@ -1,71 +1,74 @@
 #include <stdio.h>
-#include <stdlib.h>
-
+#include "3-calc.h"
 /**
- * op_add - sum two integers
- *@num1:number 1
- *@num2:number 2
+ * op_add - function addition
  *
- * Return: an integer
+ * @a: Parameter 1
+ * @b: Parameter 2
+ *
+ * Return: Return the result of the operation
  */
-int op_add(int num1, int num2)
+int op_add(int a, int b)
 {
-	return (num1 + num2);
-}
-
-/**
-* op_sub - difference between integers
-*@num1:number 1
-*@num2:number 2
-*
-* Return: an integer
-*/
-int op_sub(int num1, int num2)
-{
-	return (num1 - num2);
-}
-
-/**
-* op_mul - multiplication between integers
-*@num1:number 1
-*@num2:number 2
-*
-* Return: an integer
-*/
-int op_mul(int num1, int num2)
-{
-	return (num1 * num2);
+	return (a + b);
 }
 /**
-* op_div - division  between integers
-*@num1:number 1
-*@num2:number 2
-*
-* Return: an integer
-*/
-int op_div(int num1, int num2)
+ * op_sub - function subtraction
+ *
+ * @a: Parameter 1
+ * @b: Parameter 2
+ *
+ * Return: Return the result of the operation
+ */
+int op_sub(int a, int b)
 {
-	if (num2 == 0)
+	return (a - b);
+}
+/**
+ * op_mul - function multiplication
+ *
+ * @a: Parameter 1
+ * @b: Parameter 2
+ *
+ * Return: Return the result of the operation
+ */
+int op_mul(int a, int b)
+{
+	return (a * b);
+}
+/**
+ * op_div - function division
+ *
+ * @a: Parameter 1
+ * @b: Parameter 2
+ *
+ * Return: Return the result of the operation
+ */
+int op_div(int a, int b)
+{
+	if (b == 0)
 	{
 		printf("Error\n");
 		exit(100);
 	}
-	return (num1 / num2);
-}
 
+	return (a / b);
+}
 /**
-* op_mod - the remainder between integers
-*@num1:number 1
-*@num2:number 2
-*
-* Return: an integer
-*/
-int op_mod(int num1, int num2)
+ * op_mod - function modulo
+ *
+ * @a: Parameter 1
+ * @b: Parameter 2
+ *
+ * Return: Return the result of the operation
+ */
+int op_mod(int a, int b)
 {
-	if (num2 == 0)
+	if (b == 0)
 	{
 		printf("Error\n");
 		exit(100);
 	}
-	return (num1 % num2);
+
+	return (a % b);
 }

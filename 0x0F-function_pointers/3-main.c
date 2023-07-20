@@ -1,47 +1,38 @@
+#include "function_pointers.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "3-calc.h"
-#include "function_pointers.h"
-
 /**
- * main - searchs for an integer
- *@argc: number of arguments
- *@argv: array with arguments
+ * main - main function
  *
- * Return: no return
+ * @argc: numero de argumentos
+ * @argv: parametros
+ *
+ * Return: result of the operation selected
  */
 int main(int argc, char *argv[])
 {
-	int num1;
-	int num2;
 	int result;
+	int (*calculator)(int, int);
 
-	num1 = 0;
-	num2 = 0;
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	if (argv[2][0] != '+' && argv[2][0] != '-' && argv[2][0] != '*'
-	    && argv[2][0] != '/' && argv[2][0] != '%')
+	if (argv[2] == NULL || argv[2][1] != '\0')
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	if (argv[2][1] == '\0')
-	{
-		num1 = atoi(argv[1]);
-		num2 = atoi(argv[3]);
-		result = (*get_op_func(argv[2]))(num1, num2);
-		printf("%d\n", result);
+	calculator = get_op_func(argv[2]);
 
-	} else
+	if (calculator == NULL)
 	{
-
 		printf("Error\n");
 		exit(99);
 	}
+	result = calculator(atoi(argv[1]), atoi(argv[3]));
+	printf("%d\n", result);
 	return (0);
 }
-
