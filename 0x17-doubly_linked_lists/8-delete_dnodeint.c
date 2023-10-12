@@ -1,39 +1,52 @@
-i#include "lists.h"
+#include "lists.h"
 
 /**
- * delete_dnodeint_at_index - function with two arguments
- * @head: pointer to double linked list
- * @index: index position to delete node
+ * delete_dnodeint_at_index - deletes the node at index of a
+ * dlistint_t linked list
  *
- * Description: delete node at index position
- * Return: 1 if succeeded or -1 if failed
+ * @head: head of the list
+ * @index: index of the new node
+ * Return: 1 if it succeeded, -1 if it failed
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	dlistint_t *cursor = *head;
+	dlistint_t *h1;
+	dlistint_t *h2;
+	unsigned int i;
 
-	if (!head)
-		return (-1);
-	if (head)
+	h1 = *head;
+
+	if (h1 != NULL)
+		while (h1->prev != NULL)
+			h1 = h1->prev;
+
+	i = 0;
+
+	while (h1 != NULL)
 	{
-		while (index && cursor)
+		if (i == index)
 		{
-			cursor = cursor->next;
-			index--;
-		}
-		if (index)
-			return (-1);
-		if (!index && cursor)
-		{
-			if (cursor->next)
-				cursor->next->prev = cursor->prev;
-			if (cursor->prev)
-				cursor->prev->next = cursor->next;
+			if (i == 0)
+			{
+				*head = h1->next;
+				if (*head != NULL)
+					(*head)->prev = NULL;
+			}
 			else
-				*head = cursor->next;
-			free(cursor);
+			{
+				h2->next = h1->next;
+
+				if (h1->next != NULL)
+					h1->next->prev = h2;
+			}
+
+			free(h1);
 			return (1);
 		}
+		h2 = h1;
+		h1 = h1->next;
+		i++;
 	}
+
 	return (-1);
 }
